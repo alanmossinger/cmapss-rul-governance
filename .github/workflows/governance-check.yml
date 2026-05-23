@@ -1,0 +1,60 @@
+name: Governance Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-governance-artifacts:
+    runs-on: ubuntu-latest
+    name: Validate governance artifacts present and non-empty
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify required governance artifacts exist
+        run: |
+          set -e
+          required=(
+            "governance/model-card.md"
+            "governance/risk-register.md"
+            "governance/nist-ai-rmf-mapping.md"
+            "governance/eu-ai-act-mapping.md"
+            "governance/data-card.md"
+            "governance/hitl-protocol.md"
+            "governance/rollback-procedure.md"
+            "governance/drift-monitoring.md"
+            "governance/audit-trail.md"
+          )
+          missing=0
+          for f in "${required[@]}"; do
+            if [ ! -f "$f" ]; then
+              echo "::error::Missing required governance artifact: $f"
+              missing=1
+            elif [ ! -s "$f" ]; then
+              echo "::error::Required governance artifact is empty: $f"
+              missing=1
+            fi
+          done
+          if [ $missing -eq 1 ]; then
+            echo "::error::Governance check failed. See https://github.com/alanmossinger/cmapss-rul-governance/blob/main/governance for required artifacts."
+            exit 1
+          fi
+          echo "All required governance artifacts present and non-empty."
+
+      - name: Validate NIST AI RMF mapping references exist
+        run: |
+          set -e
+          mapping="governance/nist-ai-rmf-mapping.md"
+          referenced=$(grep -oE '\(\./[a-z0-9\-]+\.md\)' "$mapping" | sed 's|(\./||; s|)||' | sort -u || true)
+          missing=0
+          for f in $referenced; do
+            if [ ! -f "governance/$f" ]; then
+              echo "::error::NIST mapping references missing file: governance/$f"
+              missing=1
+            fi
+          done
+          [ $missing -eq 0 ] || exit 1
+          echo "NIST AI RMF mapping references validated."

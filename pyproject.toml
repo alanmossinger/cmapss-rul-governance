@@ -1,0 +1,97 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cmapss-rul-governance"
+version = "0.1.0"
+description = "Production-grade RUL prediction on NASA C-MAPSS with full AI governance layer (NIST AI RMF + EU AI Act)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Alan Mössinger", email = "alan.mossinger@vexholding.com" }
+]
+keywords = [
+    "industrial-ai",
+    "predictive-maintenance",
+    "ai-governance",
+    "nist-ai-rmf",
+    "eu-ai-act",
+    "cnn-lstm",
+    "shap",
+    "remaining-useful-life",
+    "rul",
+    "cmapss",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "scikit-learn>=1.4",
+    "torch>=2.2",
+    "shap>=0.44",
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.27",
+    "pydantic>=2.6",
+    "scipy>=1.12",
+    "matplotlib>=3.8",
+    "seaborn>=0.13",
+    "structlog>=24.1",
+    "rich>=13.7",
+    "typer>=0.9",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=4.1",
+    "pytest-asyncio>=0.23",
+    "httpx>=0.26",
+    "ruff>=0.3",
+    "black>=24.2",
+    "mypy>=1.9",
+    "pre-commit>=3.6",
+    "jupyterlab>=4.1",
+    "nbqa>=1.7",
+]
+
+[project.urls]
+Homepage = "https://github.com/alanmossinger/cmapss-rul-governance"
+Repository = "https://github.com/alanmossinger/cmapss-rul-governance"
+Author = "https://www.linkedin.com/in/alan-mossinger"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "B", "UP", "SIM", "RUF"]
+ignore = ["E501"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --cov=cmapss_rul --cov-report=term-missing"
+asyncio_mode = "auto"

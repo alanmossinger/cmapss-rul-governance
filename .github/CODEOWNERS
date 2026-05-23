@@ -1,0 +1,12 @@
+# CODEOWNERS for cmapss-rul-governance
+# Reviewers required for changes by path
+# Reference: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+* @alanmossinger
+
+# Governance artifacts require CAIO review
+/governance/ @alanmossinger
+
+# CI and infra
+/.github/ @alanmossinger
+/pyproject.toml @alanmossinger
