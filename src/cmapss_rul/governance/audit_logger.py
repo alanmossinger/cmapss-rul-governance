@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import json
 import uuid
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -24,7 +24,7 @@ class AuditLogger:
         record = {
             "record_id": record_id,
             "record_type": record_type,
-            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "timestamp": datetime.now(UTC).isoformat(),
             **payload,
         }
         with self.log_path.open("a") as f:
