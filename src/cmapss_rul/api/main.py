@@ -1,4 +1,5 @@
 """FastAPI service entry point."""
+
 from fastapi import FastAPI
 
 from cmapss_rul import __version__

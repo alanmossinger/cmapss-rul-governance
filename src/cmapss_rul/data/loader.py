@@ -2,6 +2,7 @@
 
 Reference: Saxena et al. (2008), NASA Prognostics Center of Excellence.
 """
+
 from __future__ import annotations
 
 import hashlib
@@ -44,8 +45,7 @@ def load_subset(subset: str, split: str = "train", data_dir: Path | None = None)
 
     if not path.exists():
         raise FileNotFoundError(
-            f"C-MAPSS data not found at {path}. "
-            f"See data/README.md for download instructions."
+            f"C-MAPSS data not found at {path}. " f"See data/README.md for download instructions."
         )
 
     df = pd.read_csv(path, sep=r"\s+", header=None, names=ALL_COLUMNS)
