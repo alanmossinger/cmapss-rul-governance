@@ -2,6 +2,9 @@
 
 from pathlib import Path
 
+# Global seed for reproducibility across numpy, torch, and stdlib random
+SEED = 42
+
 # Project root (resolved at import time)
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
