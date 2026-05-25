@@ -1,4 +1,5 @@
 """Centralized configuration for the cmapss_rul package."""
+
 from pathlib import Path
 
 # Project root (resolved at import time)
