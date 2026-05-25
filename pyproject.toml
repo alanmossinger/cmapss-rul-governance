@@ -49,6 +49,7 @@ dependencies = [
     "structlog>=24.1",
     "rich>=13.7",
     "typer>=0.9",
+    "pyarrow>=15.0",
 ]
 
 [project.optional-dependencies]
@@ -79,7 +80,10 @@ target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "W", "B", "UP", "SIM", "RUF"]
-ignore = ["E501"]
+# N803/N806: allow `X` (features matrix) and `X_train` style — canonical scikit-learn /
+# PyTorch convention, used throughout ML code. PEP 8 §Naming explicitly permits
+# single uppercase letters for tensors.
+ignore = ["E501", "N803", "N806"]
 
 [tool.black]
 line-length = 100

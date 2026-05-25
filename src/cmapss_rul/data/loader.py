@@ -52,6 +52,42 @@ def load_subset(subset: str, split: str = "train", data_dir: Path | None = None)
     return df
 
 
+def load_rul_file(subset: str, data_dir: Path | None = None) -> pd.Series:
+    """Load the ground-truth RUL file accompanying a C-MAPSS test set.
+
+    NASA C-MAPSS test trajectories are truncated *before* failure. The RUL_*.txt
+    file gives the true remaining cycles at the last observed cycle of each unit,
+    indexed in unit order (line 1 = unit 1, line 2 = unit 2, ...).
+
+    Parameters
+    ----------
+    subset : str
+        One of FD001, FD002, FD003, FD004.
+    data_dir : Path | None
+        Optional override of the data directory.
+
+    Returns
+    -------
+    pd.Series
+        RUL at the final observed cycle for each unit, indexed by unit number (1-based).
+    """
+    if subset not in CMAPSS_SUBSETS:
+        raise ValueError(f"Unknown subset {subset!r}; expected one of {CMAPSS_SUBSETS}")
+
+    base = data_dir or RAW_DATA_DIR
+    path = base / f"RUL_{subset}.txt"
+    if not path.exists():
+        raise FileNotFoundError(
+            f"C-MAPSS ground-truth RUL file not found at {path}. "
+            "See data/README.md for download instructions."
+        )
+
+    values = pd.read_csv(path, sep=r"\s+", header=None).iloc[:, 0]
+    values.index = pd.RangeIndex(start=1, stop=len(values) + 1, name="unit")
+    values.name = "true_rul_at_last_cycle"
+    return values
+
+
 def dataset_hash(data_dir: Path | None = None) -> str:
     """Compute a SHA-256 hash of all canonical C-MAPSS files for provenance tracking."""
     base = data_dir or RAW_DATA_DIR
