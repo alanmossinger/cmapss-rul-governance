@@ -175,16 +175,16 @@ cmapss-rul-governance/
 ## Roadmap
 
 - [x] Repository scaffold + governance artifact stubs
-- [ ] Data pipeline (loading, sliding-window features, normalization)
-- [ ] Random Forest baseline + SHAP TreeExplainer
-- [ ] LSTM model + training loop with early stopping
-- [ ] CNN-LSTM model + SHAP DeepExplainer
-- [ ] FastAPI service with audit logging
-- [ ] Drift detection (Kolmogorov-Smirnov, Population Stability Index)
-- [ ] HITL gate implementation
-- [ ] Docker container + health checks
-- [ ] Governance-check CI workflow enforcement
-- [ ] Model card auto-generation from training run
+- [x] Data pipeline (loading, sliding-window features, normalization)
+- [x] Random Forest baseline + SHAP TreeExplainer
+- [x] LSTM model + training loop with early stopping
+- [x] CNN-LSTM model + SHAP DeepExplainer
+- [x] FastAPI service with audit logging
+- [x] Drift detection (Kolmogorov-Smirnov, Population Stability Index)
+- [x] HITL gate implementation
+- [x] Docker container + health checks
+- [x] Governance-check CI workflow enforcement
+- [x] Model card auto-generation from training run
 
 ## Author
 
