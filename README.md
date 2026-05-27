@@ -190,7 +190,7 @@ cmapss-rul-governance/
 
 **Alan Mössinger** — CEO & Chief AI Officer, VEX AI-Tech · 20 Years at Petrobras
 
-20+ years leading AI, data science, and digital transformation across regulated, asset-intensive energy environments.
+20+ years leading AI, data science, and digital transformation across regulated, asset-intensive enterprise environments.
 
 - [LinkedIn](https://www.linkedin.com/in/alan-mossinger)
 - [Medium](https://medium.com/@alanmossinger)
