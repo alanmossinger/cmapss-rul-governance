@@ -13,7 +13,7 @@
 
 > **Industrial AI is not an IT investment. It is a capital allocation discipline that compounds when governance is designed in from the first commit.**
 >
-> — Alan Mössinger, Chief AI Officer
+> — Alan Mössinger
 
 ---
 
@@ -188,11 +188,11 @@ cmapss-rul-governance/
 
 ## Author
 
-**Alan Mössinger** — CEO & Chief AI Officer, VEX AI-Tech · 20 Years at Petrobras
+**Alan Mössinger** — AI/ML & Energy Senior Leader · 20 Years at Petrobras
 
 20+ years leading AI, data science, and digital transformation across regulated, asset-intensive enterprise environments.
 
-- [LinkedIn](https://www.linkedin.com/in/alan-mossinger)
+- [LinkedIn](https://www.linkedin.com/in/alan-m%C3%B6ssinger/)
 - [Medium](https://medium.com/@alanmossinger)
 - [VEX AI-Tech](https://vexaitech.com)
 
